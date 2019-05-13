@@ -45,26 +45,43 @@
       },
       handleSubmit2(ev) {
         var _this = this;
+        //表单验证
         this.$refs.ruleForm2.validate((valid) => {
-          if (valid) {
+          if (valid) { //如果表单验证通过。
             //_this.$router.replace('/table');
-            this.logining = true;
+            this.logining = true; //设置 样式 点击之后。加载时转圈圈样式
             //NProgress.start();
             var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
-            requestLogin(loginParams).then(data => {
-              this.logining = false;
-              //NProgress.done();
-              let { msg, code, user } = data;
-              if (code !== 200) {
-                this.$message({
-                  message: msg,
-                  type: 'error'
-                });
-              } else {
-                sessionStorage.setItem('user', JSON.stringify(user));
-                this.$router.push({ path: '/table' });
-              }
+            // 调用了 mock的一个方法。发送请求
+            this.$http.post("/plat/login",loginParams).then((res)=>{
+                this.logining = false; //登录成功之后，取消转圈圈样式
+                  // 对象 解析
+                console.debug(res.data);
+                  let data = res.data;
+                  if (!data) {
+                    this.$message({
+                      message: msg,
+                      type: 'error'
+                    });
+                  } else {
+                    sessionStorage.setItem('user', JSON.stringify("{}"));
+                    this.$router.push({ path: '/table' });
+                  }
             });
+            // requestLogin(loginParams).then(data => {
+            //   this.logining = false; //登录成功之后，取消转圈圈样式
+            //   // 对象 解析
+            //   let { msg, code, user } = data;
+            //   if (code !== 200) {
+            //     this.$message({
+            //       message: msg,
+            //       type: 'error'
+            //     });
+            //   } else {
+            //     sessionStorage.setItem('user', JSON.stringify(user));
+            //     this.$router.push({ path: '/table' });
+            //   }
+            // });
           } else {
             console.log('error submit!!');
             return false;
