@@ -58,10 +58,10 @@
                   // 对象 解析
                 console.debug(res.data);
                   let data = res.data;
-                  if (!data) {
+                  if (!data.success) {//只有数据库中存在改用户才能登陆
                     this.$message({
                       message: msg,
-                      type: 'error'
+                      type: 'error',
                     });
                   } else {
                     sessionStorage.setItem('user', JSON.stringify("{}"));
