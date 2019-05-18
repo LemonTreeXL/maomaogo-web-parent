@@ -65,7 +65,7 @@
                     });
                   } else {
                     sessionStorage.setItem('user', JSON.stringify("{}"));
-                    this.$router.push({ path: '/table' });
+                    this.$router.push({ path: '/echarts' });
                   }
             });
             // requestLogin(loginParams).then(data => {

@@ -2,7 +2,7 @@ import babelpolyfill from 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 //import './assets/theme/theme-green/index.css'
 import VueRouter from 'vue-router'
 import store from './vuex/store'
@@ -24,7 +24,6 @@ axios.defaults.baseURL = 'http://127.0.0.1:9527/services'  //对应后端网关�
 // 将API方法绑定到全局  /plat/login 原型扩展
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
-
 
 //NProgress.configure({ showSpinner: false });
 
