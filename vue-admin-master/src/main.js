@@ -14,6 +14,15 @@ import routes from './routes'
 // Mock.bootstrap();
 import 'font-awesome/css/font-awesome.min.css'
 
+
+//vue中引入 富文本编辑器
+import VueQuillEditor from 'vue-quill-editor'
+import 'quill/dist/quill.core.css';
+import 'quill/dist/quill.snow.css';
+import 'quill/dist/quill.bubble.css';
+Vue.use(VueQuillEditor)
+
+
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
